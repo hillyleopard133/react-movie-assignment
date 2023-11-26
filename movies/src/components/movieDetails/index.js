@@ -10,6 +10,12 @@ import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import ActorListPageTemplate from '../templateActorListPage';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import MovieList from "../movieList";
+import AddToFavoritesIcon from '../cardIcons/addToFavorites'
+import Grid from "@mui/material/Grid";
+import Header from "../headerActorList";
 
 const root = {
     display: "flex",
@@ -21,9 +27,13 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
+const MovieDetails = ({ movie, credits, recommendations }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
   
+  const handleTabChange = (event, newTab) => {
+    setActiveTab(newTab);
+  };
 
   return (
     <>
@@ -73,7 +83,38 @@ const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
-      <ActorListPageTemplate credits={credits} />
+      <div>
+      <Tabs value={activeTab} onChange={handleTabChange}>
+        <Tab label="Recommended Movies" />
+        <Tab label="Actors" />
+      </Tabs>
+
+      {activeTab === 0 && (
+        <div>          
+        <Grid container sx={{ padding: '20px' }}>
+          <Grid item xs={12}>
+            <Header title="Recommended Movies" />
+          </Grid>
+  
+          <Grid item container spacing={5}>
+            <MovieList       
+              movies={recommendations}
+              action={(movie) => {
+                return <AddToFavoritesIcon movie={movie} />
+              }} 
+            ></MovieList>
+          </Grid>
+        </Grid>
+        </div>
+      )}
+
+      {activeTab === 1 && (
+        <div>
+          <ActorListPageTemplate credits={credits} />
+        </div>
+      )}
+    </div>
+      
       <Fab
         color="secondary"
         variant="extended"

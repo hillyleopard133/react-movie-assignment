@@ -14,7 +14,7 @@ Name: Brona Keevers
 + Feature 3
 + etc
 + etc
-<MovieList action={action} movies={movies}></MovieList>
+
 ## Setup requirements.
 
 [ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
@@ -23,10 +23,13 @@ Name: Brona Keevers
 
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
 
-e.g.
-+ Discover list of movies - discover/movie
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
++ List of top rated movies - movie/top_rated
++ List of trending movies over the past day - trending/movie/day
++ List of movies currently in cinemas - movie/now_playing
++ Get the credits for a movie - movie/${id}/credits
++ Get recommendations from a movie - movie/${id}/recommendations
++ Actor details - person/${id}
++ List of movies featuring a speific actor - person/${id}/movie_credits
 
 ## Routing.
 
