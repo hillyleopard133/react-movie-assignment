@@ -28,9 +28,6 @@ const ActorHeader = (props) => {
 
       <Typography variant="h4" component="h3">
         {actor.name}
-        <a href={actor.homepage}>
-          <HomeIcon color="primary" />
-        </a>
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
