@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Header from "../headerActorList";
 import FilterCard from "../filterMoviesCard";
-import MovieList from "../actorList";
+import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
 
-function ActorListPageTemplate({ actors, name, action }) {
+function ActorListPageTemplate({ credits}) {
 
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
-        <Header title={name} />
+        <Header title="Actors" />
       </Grid>
       <Grid item container spacing={5}>
-        <MovieList action={action} actors={actors}></MovieList>
+        <ActorList actors={credits}></ActorList>
       </Grid>
     </Grid>
   );

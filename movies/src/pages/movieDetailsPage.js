@@ -7,7 +7,6 @@ import { getMovie, getMovieCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 
-import ActorPageTemplate from '../components/templateActorListPage';
 
 const MoviePage = (props) => {
   const { id } = useParams();
@@ -16,12 +15,13 @@ const MoviePage = (props) => {
     getMovie
   );
 
-  //const { data2: actors, error2, isLoading2, isError2 } = useQuery(
-  //  ["actors", { id: id }],
-  //  getMovieCredits
-  //);
+  const { data} = useQuery(
+    ["credits", { id: id }],
+    getMovieCredits
+  );
 
-  //const actors = data2.results;
+  const credits = data && data.cast ? data.cast : [];
+  console.log("Movie Credits Data:", credits); // Log the data
 
   if (isLoading) {
     return <Spinner />;
@@ -36,9 +36,9 @@ const MoviePage = (props) => {
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
-            
+            <MovieDetails movie={movie} credits={credits}/>
           </PageTemplate>
+          
         </>
       ) : (
         <p>Waiting for movie details</p>

@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import ActorListPageTemplate from '../templateActorListPage';
 
 const root = {
     display: "flex",
@@ -20,8 +21,9 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie, credits }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+  
 
   return (
     <>
@@ -71,6 +73,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+      <ActorListPageTemplate credits={credits} />
       <Fab
         color="secondary"
         variant="extended"

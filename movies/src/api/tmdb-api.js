@@ -96,6 +96,10 @@ export const getMovies = () => {
       }
       return response.json();
     })
+    .then((data) => {
+      console.log("Movie Credits Data:", data.cast); // Log the data
+      return data;
+    })
     .catch((error) => {
       throw error
    });

@@ -14,7 +14,7 @@ Name: Brona Keevers
 + Feature 3
 + etc
 + etc
-<ActorPageTemplate name = "Actors" actors={actors} />
+
 ## Setup requirements.
 
 [ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]

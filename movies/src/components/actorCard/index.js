@@ -17,7 +17,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 
-export default function ActorCard({ actor, action }) {
+export default function ActorCard({actor}) {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -49,7 +49,6 @@ export default function ActorCard({ actor, action }) {
       </CardContent>
         
       <CardActions disableSpacing>
-        {action(actor)}
         <Link to={`/person/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
