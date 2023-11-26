@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
-import PopularPage from "./pages/popularMoviesPage";
+import TrendingPage from "./pages/trendingMoviesPage";
 import TopRatedPage from "./pages/topRatedMoviesPage";
 import NowPlayingPage from "./pages/nowPlayingMoviesPage";
 import UpcomingPage from "./pages/upcomingMoviesPage";
@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/upcoming" element={<UpcomingPage />} />
-        <Route path="/popular" element={<PopularPage />} />
+        <Route path="/trending" element={<TrendingPage />} />
         <Route path="/top_rated" element={<TopRatedPage />} />
         <Route path="/now_playing" element={<NowPlayingPage />} />
         <Route path="/upcoming/playlist" element={<MustWatchMoviesPage />} />
