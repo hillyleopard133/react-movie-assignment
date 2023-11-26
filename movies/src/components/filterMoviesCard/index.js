@@ -50,6 +50,14 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleMinRatingChange = (e) => {
+    handleChange(e, "minRating", e.target.value);
+  };
+  
+  const handleReleaseYearChange = (e) => {
+    handleChange(e, "releaseYear", e.target.value);
+  };
+
   return (
     <Card 
       sx={{
@@ -89,6 +97,26 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+
+        <TextField
+          sx={{ ...formControl }}
+          id="min-rating"
+          label="Minimum Rating"
+          type="number"
+          variant="filled"
+          value={props.minRatingFilter}
+          onChange={handleMinRatingChange}
+        />
+
+        <TextField
+          sx={{ ...formControl }}
+          id="release-year"
+          label="Release Year"
+          type="number"
+          variant="filled"
+          value={props.releaseYearFilter}
+          onChange={handleReleaseYearChange}
+        />
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
