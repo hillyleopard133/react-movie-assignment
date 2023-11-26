@@ -37,7 +37,7 @@ const MovieDetails = ({ movie, credits, recommendations }) => {  // Don't miss t
 
   return (
     <>
-      <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3" sx={{ textAlign: "center" }}>
         Overview
       </Typography>
 

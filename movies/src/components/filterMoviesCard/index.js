@@ -58,6 +58,10 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "releaseYear", e.target.value);
   };
 
+  const handleSortChange = (e) => {
+    handleChange(e, "sortBy", e.target.value);
+  };
+
   return (
     <Card 
       sx={{
@@ -117,6 +121,21 @@ export default function FilterMoviesCard(props) {
           value={props.releaseYearFilter}
           onChange={handleReleaseYearChange}
         />
+
+        <FormControl sx={{ ...formControl }}>
+          <InputLabel id="sort-label">Sort By</InputLabel>
+          <Select
+            labelId="sort-label"
+            id="sort-select"
+            defaultValue=""
+            value={props.sortBy}
+            onChange={handleSortChange}
+          >
+          <MenuItem value="default">Default</MenuItem>
+          <MenuItem value="alphabetical">Alphabetical</MenuItem>
+          <MenuItem value="releaseDate">Release Date</MenuItem>
+        </Select>
+      </FormControl>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}

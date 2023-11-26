@@ -10,6 +10,8 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [minRatingFilter, setMinRatingFilter] = useState(0);
   const [releaseYearFilter, setReleaseYearFilter] = useState("");
 
+  const [sortBy, setSortBy] = useState("default"); 
+
   const genreId = Number(genreFilter);
   const minRating = Number(minRatingFilter);
   const releaseYear = Number(releaseYearFilter);
@@ -28,6 +30,12 @@ function MovieListPageTemplate({ movies, title, action }) {
       return releaseYear ? new Date(m.release_date).getFullYear() === releaseYear : true;
     });
 
+  if (sortBy === "alphabetical") {
+    displayedMovies.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortBy === "releaseDate") {
+    displayedMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+  }
+
   const handleChange = (type, value) => {
     if (type === "name") {
       setNameFilter(value);
@@ -37,6 +45,8 @@ function MovieListPageTemplate({ movies, title, action }) {
       setMinRatingFilter(value);
     } else if (type === "releaseYear") {
       setReleaseYearFilter(value);
+    } else if (type === "sortBy") {
+      setSortBy(value);
     }
   };
 

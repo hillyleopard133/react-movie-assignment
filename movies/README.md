@@ -29,7 +29,7 @@ Name: Brona Keevers
 + Get the credits for a movie - movie/${id}/credits
 + Get recommendations from a movie - movie/${id}/recommendations
 + Actor details - person/${id}
-+ List of movies featuring a speific actor - person/${id}/movie_credits
++ List of movies featuring a specific actor - person/${id}/movie_credits
 
 ## Routing.
 
