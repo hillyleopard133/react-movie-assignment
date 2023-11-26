@@ -3,8 +3,11 @@ import ActorHeader from "../headerActor";
 import Grid from "@mui/material/Grid";
 //import Image from "@mui/material/Image";
 import img from '../../images/film-poster-placeholder.png'
+import AddToFavoritesIcon from '../cardIcons/addToFavorites'
+import MovieList from "../movieList";
+import Header from "../headerActorList";
 
-const TemplateActorPage = ({ actor, children }) => {
+const TemplateActorPage = ({ movies, actor, children }) => {
   return (
     <>
       <ActorHeader actor={actor} />
@@ -29,6 +32,22 @@ const TemplateActorPage = ({ actor, children }) => {
           {children}
         </Grid>
       </Grid>
+
+      
+      <Grid container sx={{ padding: '20px' }}>
+      <Grid item xs={12}>
+        <Header title="Movies" />
+      </Grid>
+  
+      <Grid item container spacing={5}>
+        <MovieList       
+        movies={movies}
+        action={(movie) => {
+            return <AddToFavoritesIcon movie={movie} />
+        }} 
+      ></MovieList>
+      </Grid>
+    </Grid>
     </>
   );
 };

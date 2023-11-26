@@ -35,8 +35,8 @@ const ActorPage = (props) => {
     <>
       {actor ? (
         <>
-          <TemplateActorPage actor={actor}>
-            <ActorDetails actor={actor} credits={credits}/>
+          <TemplateActorPage actor={actor} movies={credits}>
+            <ActorDetails actor={actor} />
           </TemplateActorPage>
           
         </>

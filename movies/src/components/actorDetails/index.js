@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import MovieList from "../movieList";
 import ActorListPageTemplate from '../templateActorListPage';
+import Grid from "@mui/material/Grid";
 
 const root = {
     display: "flex",
@@ -22,7 +23,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const ActorDetails = ({ actor, movies, action }) => {  // Don't miss this!
+const ActorDetails = ({ actor}) => {  // Don't miss this!
 
   return (
     <>
