@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import { getNowPlaying } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
@@ -7,7 +7,12 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 const NowPlayingPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('now_playing', getNowPlaying)
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { data, error, isLoading, isError, refetch } = useQuery(
+    ["now_playing", currentPage],
+    getNowPlaying
+  );
 
   if (isLoading) {
     return <Spinner />
@@ -16,8 +21,14 @@ const NowPlayingPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-  const movies = data.results;
 
+  const movies = data.results;
+  const totalPages = data.total_pages;
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    refetch();
+  };
   // Redundant, but necessary to avoid app crashing.
   const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
@@ -27,6 +38,7 @@ const NowPlayingPage = (props) => {
     <PageTemplate
       title="Now in Cinemas"
       movies={movies}
+      totalPages={totalPages} currentPage = {currentPage} onPageChange={handlePageChange} 
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
